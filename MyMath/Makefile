@@ -10,7 +10,7 @@ ifeq ($(strip $(FXCGSDK)),)
 export FXCGSDK := $(abspath ../../)
 endif
 
-include $(FXCGSDK)/common/prizm_rules
+include $(FXCGSDK)/toolchain/prizm_rules
 
 
 #---------------------------------------------------------------------------------
@@ -31,15 +31,15 @@ INCLUDES	:=
 
 MKG3AFLAGS := -n basic:MyMath -i uns:../unselected.bmp -i sel:../selected.bmp
 
-CFLAGS	= -Os -Wall $(MACHDEP) $(INCLUDE)
+CFLAGS	= -Os -Wall $(MACHDEP) $(INCLUDE) -ffunction-sections -fdata-sections 
 CXXFLAGS	=	$(CFLAGS)
 
-LDFLAGS	= $(MACHDEP) -T$(FXCGSDK)/common/prizm.ld -Wl,-static -Wl,-gc-sections -std=c99
+LDFLAGS	= $(MACHDEP) -T$(FXCGSDK)/toolchain/prizm.x -Wl,-static -Wl,-gc-sections
 
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:=	-lfxcg -lgcc
+LIBS	:=	 -lfxcg -lc -lgcc
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
@@ -97,17 +97,21 @@ export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib) \
 					-L$(LIBFXCG_LIB)
 
 export OUTPUT	:=	$(CURDIR)/$(TARGET)
-.PHONY: $(BUILD) clean
+.PHONY: all clean
 
 #---------------------------------------------------------------------------------
-$(BUILD):
-	@[ -d $@ ] || mkdir $@
+all: $(BUILD)
 	@make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+
+$(BUILD):
+	@mkdir $@
 
 #---------------------------------------------------------------------------------
 export CYGWIN := nodosfilewarning
 clean:
-	$(RM) -fr $(BUILD) $(OUTPUT).bin $(OUTPUT).g3a
+	$(call rmdir,$(BUILD))
+	$(call rm,$(OUTPUT).bin)
+	$(call rm,$(OUTPUT).g3a)
 
 #---------------------------------------------------------------------------------
 else
