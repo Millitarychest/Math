@@ -10,7 +10,7 @@ int main() {
     return 0;
 }
 
-string derivativeNorm() {
+/*string derivativeNorm() {
     char* buffer = (char*)malloc(256); // Some string length
     int start = 0; // Used for scrolling left and right
     int cursor = 0; // Cursor position
@@ -44,5 +44,5 @@ string derivativeNorm() {
             EditMBStringCtrl((unsigned char*)buffer, 256, &start, &cursor, &key, 1, 1);
         }
     }
-}
+}*/
 

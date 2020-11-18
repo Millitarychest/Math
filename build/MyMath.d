@@ -1,1 +1,2 @@
-MyMath.o: D:/prizm/PrizmSDK-0.3/projects/MyMath/src/MyMath.c
+MyMath.o: \
+ C\:/Users/Fabian/Desktop/PrizmSDK-win-0.5.1/projects/Math/src/MyMath.c
