@@ -1,8 +1,0 @@
-      1 [main] [ 10456 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
-the public mailing list cygwin@cygwin.com
-sh3eb-elf-gcc -MMD -MP -MF D:/prizm/PrizmSDK-0.3/projects/MyMath/build/MyMath.d -Os -Wall -mb -m4a-nofpu -mhitachi -nostdlib   -ID:/prizm/PrizmSDK-0.3/projects/MyMath/build -ID:/prizm/PrizmSDK-0.3/include -c D:/prizm/PrizmSDK-0.3/projects/MyMath/src/MyMath.c -o MyMath.o 
-D:/prizm/PrizmSDK-0.3/projects/MyMath/src/MyMath.c:1:6: warning: return type of 'main' is not 'int' [-Wmain]
-D:/prizm/PrizmSDK-0.3/projects/MyMath/src/MyMath.c: In function 'main':
-D:/prizm/PrizmSDK-0.3/projects/MyMath/src/MyMath.c:5:9: warning: implicit declaration of function 'GetKey' [-Wimplicit-function-declaration]
-sh3eb-elf-gcc  MyMath.o -mb -m4a-nofpu -mhitachi -nostdlib -TD:/prizm/PrizmSDK-0.3/common/prizm.ld -Wl,-static -Wl,-gc-sections -std=c99  -LD:/prizm/PrizmSDK-0.3/lib -lfxcg -lgcc -o D:/prizm/PrizmSDK-0.3/projects/MyMath/MyMath.bin
-mkg3a -n basic:MyMath -i uns:../unselected.bmp -i sel:../selected.bmp D:/prizm/PrizmSDK-0.3/projects/MyMath/MyMath.bin D:/prizm/PrizmSDK-0.3/projects/MyMath/MyMath.g3a
